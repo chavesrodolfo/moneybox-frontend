@@ -70,8 +70,11 @@ export default function Profile() {
                         <strong>Descrição</strong>
                         <p>{target.description}</p>
 
-                        <strong>VALOR</strong>
+                        <strong>Valor desejado</strong>
                         <p>{Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(target.value)}</p>
+
+                        <strong>Valor atual</strong>
+                        <p>{Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(target.currentValue)}</p>
 
                         <button type="button" onClick={() => handleDeleteTarget(target.id)}>
                             <FiTrash2 size={24} color="#8A63FF" />

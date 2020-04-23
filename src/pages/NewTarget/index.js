@@ -16,6 +16,7 @@ export default function Target() {
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
   const [value, setValue] = useState('');
+  const [currentValue, setCurrentValue] = useState('');
 
   async function handleNewtarget(e) {
     e.preventDefault();
@@ -23,7 +24,8 @@ export default function Target() {
     const data = {
       title,
       description,
-      value
+      value,
+      currentValue
     };
 
     try {
@@ -65,9 +67,15 @@ export default function Target() {
               onChange={e => setDescription(e.target.value)}
             />
             <input
-              placeholder="Valor em reais"
+              placeholder="Valor desejado"
               value={value}
               onChange={e => setValue(e.target.value)}
+              type="number"
+            />
+            <input
+              placeholder="Valor atual"
+              value={currentValue}
+              onChange={e => setCurrentValue(e.target.value)}
               type="number"
             />
 
