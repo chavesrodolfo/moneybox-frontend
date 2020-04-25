@@ -2,7 +2,7 @@ import React from 'react';
 import './styles.css';
 import logoImg from '../../../assets/logo.svg';
 import { FiPower } from 'react-icons/fi';
-import { useHistory } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 
 export default function Header() {
     const userName = localStorage.getItem('userName');
@@ -15,7 +15,10 @@ export default function Header() {
 
     return (
         <header>
-            <img src={logoImg} alt="Money Box" />
+            <Link to="/profile">
+                <img src={logoImg} alt="Money Box" />
+            </Link>
+
             <span>Olá {userName}!</span>
 
             <button type="button" onClick={handleLogout}>

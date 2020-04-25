@@ -1,4 +1,4 @@
-.new-target-container {
+.target-container {
     width: 100%;
     padding: 32px 32px 0 32px;
     background: #f0f0f5;
@@ -12,34 +12,34 @@
     justify-content: center;
 }
 
-.new-target-container .content {
+.target-container .content {
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
 
-.new-target-container .content section {
+.target-container .content section {
     width: 100%;
     max-width: 380px;
 }
 
-.new-target-container .content section h1 {
+.target-container .content section h1 {
     margin: 64px 0 32px;
     font-size: 32px;
 }
 
-.new-target-container .content section p {
+.target-container .content section p {
     font-size: 18px;
     color: #737380;
     line-height: 32px;
 }
 
-.new-target-container .content form {
+.target-container .content form {
     width: 100%;
     max-width: 450px;
 }
 
-.new-target-container .content form input,
-.new-target-container .content form textarea {
+.target-container .content form input,
+.target-container .content form textarea {
     margin-top: 8px;
 }

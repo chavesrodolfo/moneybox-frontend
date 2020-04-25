@@ -1,12 +1,12 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import './styles.css';
 import blackBoxImg from '../../assets/black_box.png';
 import { MdKeyboardBackspace } from 'react-icons/md';
-import { Link, useHistory } from 'react-router-dom';
+import { Link, useHistory, useParams } from 'react-router-dom';
 import api from '../../services/api';
 import Header from '../parts/header';
 
-export default function Target() {
+export default function Target(props) {
 
 
   const userId = localStorage.getItem('userId');
@@ -18,15 +18,40 @@ export default function Target() {
   const [value, setValue] = useState('');
   const [currentValue, setCurrentValue] = useState('');
 
-  async function handleNewtarget(e) {
+  const isEditing = props.match.params.id !== 'new';
+
+  const { id } = useParams();
+
+  useEffect(() => {
+    if (isEditing) {
+      const { target } = props.location.state.targetInEdition;
+      setTitle(target.title);
+      setDescription(target.description);
+      setValue(target.value);
+      setCurrentValue(target.currentValue);
+    }
+
+  }, [id, isEditing, props]);
+
+  function handleTarget(e) {
     e.preventDefault();
 
-    const data = {
+    let data = {
       title,
       description,
       value,
       currentValue
     };
+
+    if (isEditing) {
+      updateTarget(id, data);
+    } else {
+      addNewTarget(data);
+    }
+
+  }
+
+  async function addNewTarget(data) {
 
     try {
       await api.post('targets', data, {
@@ -38,12 +63,28 @@ export default function Target() {
       history.push('/profile');
 
     } catch (error) {
-      alert('Erro ao cadastrar caso');
+      alert('Erro ao cadastrar objetivo');
+    }
+  }
+
+  async function updateTarget(id, data) {
+
+    try {
+      await api.put(`targets/${id}`, data, {
+        headers: {
+          Authorization: userId
+        }
+      });
+
+      history.push('/profile');
+
+    } catch (error) {
+      alert('Erro ao editar objetivo');
     }
   }
 
   return (
-    <div className="new-target-container">
+    <div className="target-container">
 
       <Header userName={userName} />
 
@@ -54,7 +95,7 @@ export default function Target() {
           <h1>Cadastrar novo objetivo</h1>
           <p>Descreva o objetivo que deseja cadastrar.</p>
 
-          <form onSubmit={handleNewtarget}>
+          <form onSubmit={handleTarget}>
 
             <input
               placeholder="Nome do objetivo"

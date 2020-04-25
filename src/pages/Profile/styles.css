@@ -32,6 +32,10 @@
     background-color: #fff;
 }
 
+.profile-container ul li .edit-button button {
+    top: 72px;
+}
+
 .profile-container ul li button:hover {
     opacity: 0.8;
 }
