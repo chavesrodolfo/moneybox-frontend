@@ -1,0 +1,45 @@
+.target-container {
+    width: 100%;
+    padding: 32px 32px 0 32px;
+    background: #f0f0f5;
+    box-shadow: 0 0 100px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    max-width: 1200px;
+    height: 100vh;
+    margin: 0 auto;
+    
+    align-items: center;
+    justify-content: center;
+}
+
+.target-container .content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.target-container .content section {
+    width: 100%;
+    max-width: 380px;
+}
+
+.target-container .content section h1 {
+    margin: 64px 0 32px;
+    font-size: 32px;
+}
+
+.target-container .content section p {
+    font-size: 18px;
+    color: #737380;
+    line-height: 32px;
+}
+
+.target-container .content form {
+    width: 100%;
+    max-width: 450px;
+}
+
+.target-container .content form input,
+.target-container .content form textarea {
+    margin-top: 8px;
+}
